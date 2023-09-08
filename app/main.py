@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from .database import sessionLocal, engine
-import models
-from .models import Teachers
+from . import models
+from .models import Teacher
 
 app = FastAPI()
 
@@ -26,5 +26,5 @@ async def index():
 @app.get("/teachers")
 async def all_teachers():
     db = get_db()
-    all = db.query(Teachers).all()
+    all = db.query(Teacher).all()
     return {"Successful": all}
